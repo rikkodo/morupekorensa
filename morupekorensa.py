@@ -50,7 +50,7 @@ def splitText(texts: str) -> str:
     return s_text
 
 
-def main(inputpaths: List[str], count: int) -> List[str]:
+def main(inputpaths: List[str], count: int) -> None:
     text = loadFile(inputpaths)
     splited_text = splitText(text)
 
@@ -62,11 +62,11 @@ def main(inputpaths: List[str], count: int) -> List[str]:
         gened_text = text_model.make_short_sentence(MAX_CHARS, tries=100)
         gened_texts.append(gened_text)
 
-    return(gened_texts)
+    print("\n".join(gened_texts))
 
 
 if __name__ == "__main__":
     if (len(sys.argv) < 3):
         print("Usage {} count [inputs]".format(sys.argv[0]), file=sys.stderr)
         exit(1)
-    print("\n".join(main(sys.argv[2:], int(sys.argv[1]))))
+    main(sys.argv[2:], int(sys.argv[1]))
