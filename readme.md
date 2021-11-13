@@ -7,6 +7,7 @@
 ## REF
 
 [Pythonを使いマルコフ連鎖で文章を自動生成する - 頑張らないために頑張る](https://ysko909.github.io/posts/how-to-use-markovify/)
+[学習済みWord2Vec モデルをサクッと使ってみる | cedro-blog](http://cedro3.com/ai/word2vec-gensim/#google_vignette)
 
 ## 準備
 
@@ -30,3 +31,4 @@ sudachipy link -t full
 # to core(defalut)
 sudachipy link -u
 ```
+

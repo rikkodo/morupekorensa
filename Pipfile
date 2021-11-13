@@ -9,6 +9,7 @@ sudachipy = "*"
 sudachidict-core = "*"
 sudachidict-full = "*"
 sudachidict-small = "*"
+gensim = "*"
 
 [dev-packages]
 flake8 = "*"
