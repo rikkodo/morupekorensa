@@ -32,3 +32,12 @@ sudachipy link -t full
 sudachipy link -u
 ```
 
+## word2vec
+
+[東北大の](http://www.cl.ecei.tohoku.ac.jp/~m-suzuki/jawiki_vector/)を解凍し、`./input/entity_vector/entity_vector.model.bin`に配置する。
+
+## 単語生成
+
+```sh
+./pekorace.py 入力を一行ごとに書いたテキスト 新たに生成する単語数
+```
