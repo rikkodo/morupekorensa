@@ -3,6 +3,9 @@
 sudachipyのトークナイザーラッパー
 """
 
+from types import ModuleType
+from typing import List
+
 from sudachipy import tokenizer, dictionary
 from sudachipy.sudachipy import MorphemeList
 
@@ -10,6 +13,8 @@ DICTTYPE = "full"
 
 DICTOBJECT = dictionary.Dictionary(dict_type=DICTTYPE).create()
 SPLITMODE = tokenizer.Tokenizer.SplitMode.C
+
+CHANGE = ['副詞', '名詞', '補助記号', '形状詞', '形容詞', '動詞']
 
 
 def tokenize(word: str) -> MorphemeList:
@@ -55,10 +60,42 @@ def token2Str(token: MorphemeList) -> str:
     トークンを文字列に逆変換する
 
     Parameters:
-        word str:
+        word:
             トークン化対象の文字列
 
     Returns:
         トークン化したword
     """
     return "".join([t.surface() for t in token])
+
+
+def toMorphemeList(slist: List[str]) -> List[MorphemeList]:
+    """
+    文字列リストをトークンリストに変換する
+
+    Parameters:
+        slist:
+            トークン化対象の文字列集合
+
+    Returns:
+        トークン化したリスト
+
+    """
+    return [tokenize(w) for w in slist]
+
+
+def isReplace(t: ModuleType) -> bool:
+    """
+    変換対象の品詞かを判定する
+    """
+    return t.part_of_speech()[0] in CHANGE
+
+
+def getHinshiList(ml: List[MorphemeList]) -> List[str]:
+    s = set()
+
+    for tz in ml:
+        for t in tz:
+            s.add(t.part_of_speech()[0])
+
+    return sorted(list(s))
